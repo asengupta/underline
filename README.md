@@ -1,6 +1,7 @@
 underline
 =========
 
+NOTE: Underline depends upon underscore, and its components are packaged as RequireJS modules.
 Methods to make handling JavaScript objects/maps easier
 
 Use underline to make manipulating maps easier.
