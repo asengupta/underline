@@ -23,46 +23,46 @@ define(["map-extensions"], function(MapExtensions) {
 			expect(transformed).to.eql({label1: [23], label2: [34, 10], label3: [645, 20], label5: [30]});
 		});
 		it('can merge maps with separate names', function() {
-			var pocketMargins = {p1: [23, 45], p2: 34, p3: 645};
+			var margins = {p1: [23, 45], p2: 34, p3: 645};
 			var sales = {p1: 10, p2: 20, p3: 30, p4: [16, 67]};
-			var pocketMarginsSpec = {name: "pocketMargins", mapping: pocketMargins};
+			var marginsSpec = {name: "margins", mapping: margins};
 			var salesSpec = {name: "sales", mapping: sales};
-			var transformed = _ext.zipByName([pocketMarginsSpec, salesSpec]);
+			var transformed = _ext.zipByName([marginsSpec, salesSpec]);
 			console.log(transformed);
 			expect(transformed).to.eql({
 				p1: {
-						sales: 10, pocketMargins: [23, 45]
+						sales: 10, margins: [23, 45]
 					},
 				p2: {
-						sales: 20, pocketMargins: 34
+						sales: 20, margins: 34
 					},
 				p3: {
-						sales: 30, pocketMargins: 645
+						sales: 30, margins: 645
 					},
 				p4: {
-						sales: [16, 67], pocketMargins: {}
+						sales: [16, 67], margins: {}
 					}
 			});
 		});
 		it('can merge maps with separate names with defaults for undefined values', function() {
-			var pocketMargins = {p1: [23, 45], p2: 34, p3: 645};
+			var margins = {p1: [23, 45], p2: 34, p3: 645};
 			var sales = {p1: 10, p2: 20, p3: 30, p4: [16, 67]};
-			var pocketMarginsSpec = {name: "pocketMargins", mapping: pocketMargins};
+			var marginsSpec = {name: "margins", mapping: margins};
 			var salesSpec = {name: "sales", mapping: sales};
-			var transformed = _ext.zipByName([pocketMarginsSpec, salesSpec], {value: "Default"});
+			var transformed = _ext.zipByName([marginsSpec, salesSpec], {value: "Default"});
 			console.log(transformed);
 			expect(transformed).to.eql({
 				p1: {
-						sales: 10, pocketMargins: [23, 45]
+						sales: 10, margins: [23, 45]
 					},
 				p2: {
-						sales: 20, pocketMargins: 34
+						sales: 20, margins: 34
 					},
 				p3: {
-						sales: 30, pocketMargins: 645
+						sales: 30, margins: 645
 					},
 				p4: {
-						sales: [16, 67], pocketMargins: {value: "Default"}
+						sales: [16, 67], margins: {value: "Default"}
 					}
 			});
 		});
